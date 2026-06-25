@@ -1,6 +1,6 @@
 /* ============================================================
-   STOLBASZ — premium, architektoniczny B2B fit-out
-   Jasna paleta, zero brązu. System wg premium-web-craft.
+   DUKLIN — prace wysokościowe na linach (Warszawa)
+   Jasna, architektoniczna paleta. System wg premium-web-craft.
    Projekt strony: Krzysztof Brzeziński
    ============================================================ */
 
@@ -23,12 +23,12 @@
   --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px; --space-10:128px;
 
   /* TYPOGRAFIA — fluid clamp() */
-  --text-sm:clamp(.82rem,.8rem+.1vw,.9rem);
-  --text-base:clamp(1rem,.97rem+.15vw,1.1rem);
-  --text-lg:clamp(1.12rem,1.05rem+.3vw,1.3rem);
-  --text-h3:clamp(1.2rem,1.1rem+.5vw,1.5rem);
-  --text-h2:clamp(1.9rem,1.5rem+1.9vw,2.8rem);
-  --text-h1:clamp(2.6rem,1.9rem+3.6vw,4.6rem);
+  --text-sm:clamp(.82rem,.8rem + .1vw,.9rem);
+  --text-base:clamp(1rem,.97rem + .15vw,1.1rem);
+  --text-lg:clamp(1.12rem,1.05rem + .3vw,1.3rem);
+  --text-h3:clamp(1.2rem,1.1rem + .5vw,1.5rem);
+  --text-h2:clamp(1.9rem,1.5rem + 1.9vw,2.8rem);
+  --text-h1:clamp(2.6rem,1.9rem + 3.6vw,4.6rem);
 
   /* PROMIENIE — architektoniczne, raczej ostre */
   --r-sm:3px; --r-md:6px; --r-lg:10px;
@@ -105,9 +105,8 @@ p{max-width:65ch}
 
 /* ---------- NAV ---------- */
 .nav{
-  position:sticky;top:0;z-index:50;
-  background:color-mix(in srgb,var(--paper) 88%,transparent);
-  backdrop-filter:saturate(140%) blur(10px);
+  position:static;z-index:50;
+  background:var(--paper);
   border-bottom:var(--hairline);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
@@ -153,7 +152,7 @@ p{max-width:65ch}
 .hero-cine .hero-copy{max-width:660px}
 .hero-cine .eyebrow{color:#fff;margin-bottom:var(--space-5)}
 .hero-cine .eyebrow::before{background:#fff}
-.hero-cine h1{color:#fff;margin-bottom:var(--space-5);font-size:clamp(2.9rem,2rem+4.4vw,5.2rem)}
+.hero-cine h1{color:#fff;margin-bottom:var(--space-5);font-size:clamp(2.9rem,2rem + 4.4vw,5.2rem)}
 .hero-cine .lead{color:rgba(255,255,255,.92);max-width:48ch;margin-bottom:var(--space-7)}
 .hero-cine .hero-actions{display:flex;flex-wrap:wrap;gap:var(--space-4)}
 @media(max-width:680px){
@@ -175,7 +174,7 @@ p{max-width:65ch}
 /* ---------- STRIP (pasek skrótów / liczby) ---------- */
 .strip{background:var(--dark);color:#fff}
 .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-6);padding-block:var(--space-8)}
-.strip .item .k{font-family:var(--font-display);font-size:clamp(1.6rem,1.2rem+1.4vw,2.4rem);font-weight:800;letter-spacing:-.02em;color:#fff}
+.strip .item .k{font-family:var(--font-display);font-size:clamp(1.6rem,1.2rem + 1.4vw,2.4rem);font-weight:800;letter-spacing:-.02em;color:#fff}
 .strip .item .v{font-size:var(--text-sm);color:rgba(255,255,255,.66);margin-top:var(--space-2);line-height:1.45}
 .strip .item{border-left:2px solid var(--accent);padding-left:var(--space-5)}
 
@@ -246,7 +245,7 @@ p{max-width:65ch}
 .trust{background:var(--paper-2)}
 .trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-5);margin-top:var(--space-7)}
 .trust-card{background:#fff;border-radius:var(--r-md);padding:var(--space-7) var(--space-6);box-shadow:var(--sh-sm);border-top:3px solid var(--accent)}
-.trust-card .big{font-family:var(--font-display);font-size:clamp(1.8rem,1.3rem+1.6vw,2.6rem);font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1}
+.trust-card .big{font-family:var(--font-display);font-size:clamp(1.8rem,1.3rem + 1.6vw,2.6rem);font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1}
 .trust-card h3{font-size:1.12rem;margin:var(--space-3) 0 var(--space-2)}
 .trust-card p{color:var(--muted);font-size:var(--text-base);line-height:1.55}
 
@@ -362,16 +361,13 @@ section{padding-block:clamp(64px,8vw,128px)}
 .tile{box-shadow:none;border-radius:var(--r-sm)}
 .tile:hover{box-shadow:none}
 
-/* 5) Sticky-nav kondensuje się po przewinięciu (sygnał dopracowania) */
-.nav{transition:box-shadow .4s ease,background .4s ease}
-.nav.is-stuck{box-shadow:0 1px 0 var(--line),0 14px 30px -24px rgba(0,0,0,.45)}
-.nav-inner{transition:height .35s var(--ease)}
-.nav.is-stuck .nav-inner{height:60px}
+/* 5) Pasek statyczny: stoi na samej górze strony i przewija się razem
+   z treścią — nie podąża za ekranem (nie jest sticky/fixed). */
 
 /* 6) MANIFESTO — pełnoekranowy cytat-bohater (zastępuje generyczne „Dlaczego my") */
 .manifesto{background:var(--paper-2);text-align:center}
 .manifesto .wrap{max-width:60rem}
-.manifesto p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.6rem,1rem+2.4vw,2.8rem);line-height:1.32;color:var(--ink-soft);margin-inline:auto;max-width:26ch;position:relative;padding-top:var(--space-8)}
+.manifesto p{font-family:var(--font-display);font-style:italic;font-size:clamp(1.6rem,1rem + 2.4vw,2.8rem);line-height:1.32;color:var(--ink-soft);margin-inline:auto;max-width:26ch;position:relative;padding-top:var(--space-8)}
 .manifesto p::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:54px;height:1px;background:var(--accent)}
 .manifesto p span{color:var(--accent);font-style:italic}
 
@@ -387,5 +383,4 @@ section{padding-block:clamp(64px,8vw,128px)}
 
 /* 8) LOGO klienta w nagłówku (gdy podane --logo) */
 .brand-logo{height:40px;width:auto;max-width:220px;object-fit:contain;display:block}
-.nav.is-stuck .brand-logo{height:34px}
 @media(max-width:680px){.brand-logo{height:32px}}
