@@ -25,15 +25,3 @@
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
   els.forEach(function (el) { io.observe(el); });
 })();
-
-// nav kondensuje się po przewinięciu (cienka linia + niższy pasek) — addytywne, lekkie
-(function () {
-  var nav = document.querySelector('.nav') || document.querySelector('header');
-  if (!nav) return;
-  var ticking = false;
-  function upd() { nav.classList.toggle('is-stuck', window.scrollY > 24); ticking = false; }
-  window.addEventListener('scroll', function () {
-    if (!ticking) { ticking = true; requestAnimationFrame(upd); }
-  }, { passive: true });
-  upd();
-})();
